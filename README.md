@@ -1,0 +1,2 @@
+# miniProgramCli
+a miniProgram cli
