@@ -1,0 +1,33 @@
+<!--pages/todo/todo.wxml-->
+<view class="page">
+  <!-- 表单新建 -->
+  <input class="task-content" value="{{taskContent}}" auto-focus placeholder="Task content" />
+  <view class="task-type-container">
+    <view class="task-type-item {{type=='work'?' on':''}}" data-type="work" bindtap="tapType">
+      <icon class="task-type-icon" color="#fed91a" type="waiting" size="10"></icon>
+      <text class="task-type">work</text>
+    </view>
+    <view class="task-type-item  {{type=='study'?' on':''}} " data-type="study" bindtap="tapType">
+      <icon class="task-type-icon" color="#d00263" type="waiting" size="10"></icon>
+      <text class="task-type">study</text>
+    </view>
+    <view class="task-type-item  {{type=='daliy'?' on':''}}" data-type="daliy" bindtap="tapType">
+      <icon class="task-type-icon" color="#3044f3" type="waiting" size="10"></icon>
+      <text class="task-type">daliy</text>
+    </view>
+
+  </view>
+  <view class="task-time">
+    <picker mode="date" bindchange="bindDateChange" value="{{dateIdx}}" range="{{dateArray}}">
+      <view class="picker1">
+        {{dateArray[dateIdx].name || today}} :
+      </view>
+    </picker>
+    <picker mode="time" start="09:01" end="21:01" bindchange="bindPickerChange" value="{{time}}">
+      <view class="picker2">
+        {{time}}
+      </view>
+    </picker>
+  </view>
+  <button class="add-btn" bindtap="onSubmit">add Task</button>
+</view>

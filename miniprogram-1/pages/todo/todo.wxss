@@ -1,0 +1,56 @@
+/* pages/todo/todo.wxss */
+.page {
+  padding: 10px;
+}
+
+.add-btn {
+  width: 80%;
+  color: #ffffff;
+  background: linear-gradient(to right, #7db4fe, #6184e8);
+}
+
+.task-content {
+  padding-left: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.task-type-container {
+  margin-top: 20px;
+  height: 40px;
+  border-bottom: 1px solid #efefef;
+  display: flex;
+}
+
+.task-type-item {
+  width: 60px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  margin: 0 10px;
+}
+
+.task-type-item.on {
+  background-color: #11b719;
+  border-radius: 4px;
+  color: #ffffff;
+}
+
+.task-type-icon {
+  margin-right: 5px;
+}
+
+.task-type-item.on .task-type-icon {
+  display: none;
+}
+
+.task-time{
+  display: flex;
+  height: 80px;
+  line-height: 50px;
+  padding-left: 10px;
+}
+.picker1{
+  padding-right: 10px;
+
+}
