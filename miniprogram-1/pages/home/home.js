@@ -8,12 +8,29 @@ Page({
    * time:存入年月日时分秒
    */
   data: {
+    animationData: {},
+    animation: '',
     todoList: [{
+      id: '',
       type: 'work',
       time: '12:00',
       day: '',
       content: '内容11',
-      status: 'complete',
+      status: 'created',
+    }, {
+      id: '',
+      type: 'work',
+      time: '12:00',
+      day: '',
+      content: '内容11',
+      status: 'created',
+    }, {
+      id: '',
+      type: 'work',
+      time: '12:00',
+      day: '',
+      content: '内容11',
+      status: 'created',
     }]
   },
 
@@ -24,7 +41,25 @@ Page({
 
   },
   onChecked: function (event) {
-    console.log(event)
+    let {
+      index
+    } = event.currentTarget.dataset;
+    let todoItem = this.data.todoList[index];
+    let newStatus = '';
+    if (todoItem.status == 'complete') {
+      newStatus = 'undone';
+    } else {
+      newStatus = 'complete';
+      this.setData({
+        animationData: this.animation.export()
+      })
+    };
+    todoItem.status = newStatus;
+    let newTodo = "todoList[" + index + "]"
+    this.setData({
+      [newTodo]: todoItem
+    });
+
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -37,7 +72,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var animation = wx.createAnimation({
+      duration: 2000,
+      timingFunction: 'ease',
+    })
+    this.animation = animation;
+    animation.opacity(.3).translateY(400).step()
   },
 
   /**

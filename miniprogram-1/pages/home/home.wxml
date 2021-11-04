@@ -1,17 +1,19 @@
 <!--pages/home/home.wxml-->
 <view class="page">
-  <view class="item-todo" wx:for="{{todoList}}">
+  <view class="item-todo {{item.status}}" wx:for="{{todoList}}" wx:key="index">
     <label class="radio-wrap">
-      <radio data-index="{{index}}" bindtap="onChecked" checked="true" color="#10b53b" />
+      <radio data-index="{{index}}" bindtap="onChecked" checked="{{item.status=='complete'}}" color="#10b53b" />
     </label>
     <text class="time">10:00</text>
-    <text class="content">工作事项1</text>
+    <text class="content ">工作事项1</text>
   </view>
-  <view class="item-todo">
-    <label class="radio">
-      <radio value="r1" color="#4ac60d" />
-    </label>
-    <text class="time">10:00</text>
-    <text class="content complete">工作事项2</text>
+  <view class="add-todo-icon close">
+    <text class="icon-plus">+</text>
+  </view>
+
+  <view class="add-todo-container">
+    <!-- <view class="add-todo-icon close">
+      <text class="icon-close">X</text>
+    </view> -->
   </view>
 </view>
