@@ -1,4 +1,8 @@
 // pages/home/home.js
+import moment from 'moment';
+import {
+  getTodo,updateTodo
+} from '../../utils/util'
 Page({
 
   /**
@@ -10,35 +14,20 @@ Page({
   data: {
     animationData: {},
     animation: '',
-    todoList: [{
-      id: '',
-      type: 'work',
-      time: '12:00',
-      day: '',
-      content: '内容11',
-      status: 'created',
-    }, {
-      id: '',
-      type: 'work',
-      time: '12:00',
-      day: '',
-      content: '内容11',
-      status: 'created',
-    }, {
-      id: '',
-      type: 'work',
-      time: '12:00',
-      day: '',
-      content: '内容11',
-      status: 'created',
-    }]
+    todoList: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    getTodo({
+      date: moment(new Date()).format('YYYY-MM-DD')
+    }, (res) => {
+      this.setData({
+        todoList: res.data
+      })
+    })
   },
   onChecked: function (event) {
     let {
@@ -59,7 +48,11 @@ Page({
     this.setData({
       [newTodo]: todoItem
     });
+    updateTodo(todoItem._id, {
+      status: newStatus
+    }, () => {
 
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

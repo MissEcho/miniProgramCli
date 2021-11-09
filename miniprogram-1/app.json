@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/add/add",
     "pages/todo/todo",
     "pages/index/index",
     "pages/logs/logs"
@@ -8,9 +9,36 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Weixin",
+    "navigationBarTitleText": "todo",
     "navigationBarTextStyle": "black"
   },
+  "usingComponents": {
+    "v-tabBar": "custom-tab-bar/index"
+  },
   "style": "v2",
+  "tabBar": {
+    "color": "#3f81c1",
+    "selectedColor": "#fc9709",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "today",
+        "iconPath": "./img/tab/icon_baoxue.png",
+        "selectedIconPath": "./img/tab/icon_duoyun.png"
+      },
+      {
+        "pagePath": "pages/add/add",
+        "text": "add",
+        "iconPath": "./img/tab/icon_qingtian.png",
+        "selectedIconPath": "./img/tab/icon_qingtian_on.png"
+      },
+      {
+        "pagePath": "pages/todo/todo",
+        "text": "todos",
+        "iconPath": "./img/tab/icon_yejianqingtian.png",
+        "selectedIconPath": "./img/tab/icon_yejianqingtian_on.png"
+      }
+    ]
+  },
   "sitemapLocation": "sitemap.json"
 }

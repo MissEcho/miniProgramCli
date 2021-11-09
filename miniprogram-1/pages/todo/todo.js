@@ -1,58 +1,48 @@
 // pages/todo/todo.js
+import moment from 'moment';
+import {
+  delTodo
+} from '../../utils/util'
+import {
+  getTodo
+} from '../../utils/util'
 Page({
+
   /**
    * 页面的初始数据
    */
   data: {
-    taskContent: '',
-    time: '12:01',
-    type: 'work',
-    dateStr: {},
-    dateIdx: 0,
-    dateArray: [{
-        name: 'today',
-        num: 0
-      },
-      {
-        name: 'tomorrow',
-        num: 1
-      },
-      {
-        name: 'afterTomorrow',
-        num: 2
-      }
-    ]
+    allTodo: [],
+    workTodo: [],
+    studyTodo: [],
+    dailyTodo: [],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
-  },
-  tapType: function (event) {
-    let {
-      type
-    } = event.currentTarget.dataset;
-    this.setData({
-      type
+    getTodo({}, (res) => {
+      // 获取所有todo，根据分类
+      let result = res.data;
+      let workTodo = result.filter(item => {
+        return item.type == 'work'
+      })
+      let studyTodo = result.filter(item => {
+        return item.type == 'study'
+      })
+      let dailyTodo = result.filter(item => {
+        return item.type == 'daily'
+      })
+      this.setData({
+        allTodo: result,
+        workTodo,
+        studyTodo,
+        dailyTodo
+      })
     })
   },
-  onSubmit: function () {
-    let {
-      taskContent,
-      dateIdx,
-      time,
-      type
-    } = this.data;
-    let param = {
-      taskContent,
-      dateIdx,
-      time,
-      type
-    }
-    console.log(param)
-  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
